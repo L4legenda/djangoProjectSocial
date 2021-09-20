@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-fi#9tef%um_060$&)xx492xnjx)65f)2y^=sq2x51=#l5s!2kh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.ru', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'social_django'
 
 ]
 
@@ -129,3 +131,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2'
+]
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "849838930979-5n8jqslkvd52akiepn8s1a1dna4kdhn8.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "n24l8I5g4dabOvTVRWr61nhm"
